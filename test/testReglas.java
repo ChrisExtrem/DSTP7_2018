@@ -76,8 +76,22 @@ public class testReglas {
         System.out.println("Resultado 3: "+v2.Total());
         System.out.println("Descuento 3(6.5%): "+r2.RealizarDescuento(v2));
         assertEquals(170.95d,r2.RealizarDescuento(v2),0.01); //Total 2630, descuento esperado 170.95
-        
-        
+    }
+    
+    @Test
+    public void testRegla3(){
+        Regla3 r3 = new Regla3();
+        Venta v3 = new Venta();
+        //Caso 2 Unidades Lacteos
+        v3.AgregarDetalle(Negocio.Productos()[1], 2);
+        System.out.println("Resultado 1: "+v3.Total());
+        System.out.println("Descuento 1(30% x 2 Unidades): "+r3.RealizarDescuento(v3));//Total 60, descuento esperado 9.0d
+        assertEquals(9,r3.RealizarDescuento(v3),0.01);
+        //Caso 5 Unidades Verduras
+        v3.AgregarDetalle(Negocio.Productos()[3], 5);
+        System.out.println("Resultado 2: "+v3.Total());
+        System.out.println("Descuento 2(30% x 5 Unidades): "+r3.RealizarDescuento(v3));//Total 360, descuento esperado 81.0d
+        assertEquals(81,r3.RealizarDescuento(v3),0.01);
     }
     
 }
