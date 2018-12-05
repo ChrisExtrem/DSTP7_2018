@@ -94,4 +94,16 @@ public class testReglas {
         assertEquals(81,r3.RealizarDescuento(v3),0.01);
     }
     
+    @Test
+    public void testRegla4(){
+        Regla4 r4 = new Regla4();
+        Venta v4 = new Venta();
+        v4.AgregarDetalle(Negocio.Productos()[0], 10);
+        v4.AgregarDetalle(Negocio.Productos()[3], 10);
+        System.out.println("Resultado: "+v4.Total());
+        System.out.println("Descuento en Ventas > $1000 (10% x Producto.Cantidad>3): "
+                +r4.RealizarDescuento(v4)); //Total 1100, descuento esperado 11
+        assertEquals(11,r4.RealizarDescuento(v4),0.01);
+    }
+    
 }

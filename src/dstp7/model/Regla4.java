@@ -9,23 +9,23 @@ public class Regla4 implements IRegla{
             double descuento = 0;
             ArrayList<ProductoDescuento> productos = new ArrayList<>();
             
-            for (LineaVenta Detalle : venta.Detalle()) {
+            for (LineaVenta Detalle : venta.Detalle()){
                 boolean existe = false;
-                for (ProductoDescuento productoDescuento : productos) {
-                    if (productoDescuento.getProducto().getCodigo() != Detalle.getProducto().getCodigo()) {
+                for (ProductoDescuento productoDescuento : productos){
+                    if (productoDescuento.getProducto().getCodigo() == Detalle.getProducto().getCodigo()) {
                         existe = true;
                         productoDescuento.setCantidad(productoDescuento.getCantidad() + Detalle.getCantidad());
                         break;
                     }
                 }
-                if (existe) {
-                    productos.add(new ProductoDescuento(Detalle.getProducto()));
+                if (!existe) {
+                    productos.add(new ProductoDescuento(Detalle.getProducto(),Detalle.getCantidad()));
                 }
             }
             for(ProductoDescuento productoDescuento : productos){
                 if (productoDescuento.getCantidad() > 3)
                 {
-                    descuento += productoDescuento.getProducto().getPrecio() *  porcentaje;
+                    descuento += productoDescuento.getProducto().getPrecio() * porcentaje;
                 }
             }
             return descuento;
