@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import dstp7.model.*;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -15,13 +16,14 @@ import static org.junit.Assert.*;
  *
  * @author Admin
  */
-public class NewJUnitTest {
+public class testReglas {
     
-    public NewJUnitTest() {
+    public testReglas() {
     }
     
     @BeforeClass
     public static void setUpClass() {
+        Negocio.Iniciar();
     }
     
     @AfterClass
@@ -41,4 +43,15 @@ public class NewJUnitTest {
     //
     // @Test
     // public void hello() {}
+    
+    @Test
+    public void testRegla1(){
+        Regla1 r1 = new Regla1();
+        Venta v1 = new Venta();
+        v1.AgregarDetalle(Negocio.Productos()[0],2);
+        assertEquals(25d,r1.RealizarDescuento(v1),0);
+        v1.AgregarDetalle(Negocio.Productos()[6],3);
+        assertEquals(53d,r1.RealizarDescuento(v1),0);
+    }
+    
 }

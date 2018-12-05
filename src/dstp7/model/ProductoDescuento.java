@@ -4,9 +4,9 @@ public class ProductoDescuento {
     private int Cantidad;
     
     public ProductoDescuento(){}
-    public ProductoDescuento(Producto producto){
+    public ProductoDescuento(Producto producto,int cantidad){
         Producto = producto;
-        Cantidad = 1;
+        Cantidad = cantidad;
     }
 
     public Producto getProducto() {
