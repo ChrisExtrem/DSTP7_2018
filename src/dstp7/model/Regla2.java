@@ -20,6 +20,6 @@ public class Regla2 implements IRegla
             {
                 return total * porcentaje3;
             }
-return 0;
+            return 0;
         }
     }
